@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
-const Recomendation = require("./RecomendationModel");
+const RecomendationModel = require("./RecomendationModel"); // path e casing corretos
 
 const Category = sequelize.define(
   "Category",
@@ -23,13 +23,13 @@ const Category = sequelize.define(
   }
 );
 
-// Relação 1:N com Recommendation
-Category.hasMany(Recomendation, {
+// Relação 1:N com Recomendation
+Category.hasMany(RecomendationModel, {
   foreignKey: "categoryId",
-  as: "recommendations",
+  as: "recommendations", // padronizado
 });
 
-Recomendation.belongsTo(Category, {
+RecomendationModel.belongsTo(Category, {
   foreignKey: "categoryId",
   as: "category",
 });
