@@ -13,8 +13,8 @@ const RecomendationModel = sequelize.define("Recomendation", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  category: {
-    type: DataTypes.STRING,
+  categoryId: {
+    type: DataTypes.UUID,
     allowNull: false,
   },
   description: {
