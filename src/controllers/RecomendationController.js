@@ -1,6 +1,5 @@
 const RecomendationModel = require("../models/RecomendationModel");
 const UserModel = require("../models/UserModel");
-const { getAll } = require("./UserController");
 
 const RecomendationController = {
   //CRIAR RECOMENDAÇÃO
@@ -16,7 +15,7 @@ const RecomendationController = {
       const newRecomendation = await RecomendationModel.create({
         title,
         categoryId,
-        description: summary,
+        description,
         rating,
         imageUrl,
         userId,
@@ -107,3 +106,5 @@ const RecomendationController = {
     }
   },
 };
+
+module.exports = RecomendationController;

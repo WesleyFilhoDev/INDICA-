@@ -1,5 +1,6 @@
-const express = require("express");
-const RecomendationController = require("../controllers/RecomendationController");
+// routes/RecomendationRoute.js
+import express from "express";
+import RecomendationController from "../controllers/RecomendationController.js"; // Troca de require para import e adiciona .js
 
 const router = express.Router();
 
@@ -18,4 +19,4 @@ router.put("/:id", RecomendationController.update);
 //ROTA PARA DELETAR UMA RECOMENDAÇÃO
 router.delete("/:id", RecomendationController.delete);
 
-module.exports = router;
+export default router;
