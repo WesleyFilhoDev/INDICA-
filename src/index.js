@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
   res.send("API funcionando!");
 });
 
+//ROTAS
 app.use("/users", UserRoute);
 app.use("/recomendations", RecomendationRoute);
 app.use("/categories", CategoryRoute);

@@ -1,4 +1,6 @@
 const User = require("../models/UserModel");
+const { sendWelcomeEmail } = require("../services/mailService");
+
 const bcrypt = require("../services/bcrypt"); // seu serviço de hash
 
 const UserController = {
@@ -28,6 +30,9 @@ const UserController = {
         email,
         password: hashedPassword,
       });
+
+      //ENVIA O EMAIL DE BOAS VINDAS
+      await sendWelcomeEmail(email, name);
 
       return res
         .status(201)
