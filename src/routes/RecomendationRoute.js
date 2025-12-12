@@ -1,23 +1,13 @@
-// routes/RecomendationRoute.js
 import express from "express";
-import RecomendationController from "../controllers/RecomendationController.js"; // Troca de require para import e adiciona .js
-import { AuthController } from "../controllers/AuthController.js";
+import RecomendationController from "../controllers/RecomendationController.js";
+import { authMiddleware } from "../middlewares/Authentication.js";
 
 const router = express.Router();
 
-// ROTA PARA CRIAR UMA NOVA RECOMENDAÇÃO
-router.post("/", AuthController, RecomendationController.create);
-
-// ROTA PARA BUSCAR TODAS AS RECOMENDAÇÕES
-router.get("/", AuthController, RecomendationController.getAll);
-
-// ROTA PARA BUSCAR UMA RECOMENDAÇÃO POR ID
-router.get("/:id", AuthController, RecomendationController.getById);
-
-//ROTA PARA ATUALIZAR UMA RECOMENDAÇÃO
-router.put("/:id", AuthController, RecomendationController.update);
-
-//ROTA PARA DELETAR UMA RECOMENDAÇÃO
-router.delete("/:id", AuthController, RecomendationController.delete);
+router.post("/", authMiddleware, RecomendationController.create);
+router.get("/", authMiddleware, RecomendationController.getAll);
+router.get("/:id", authMiddleware, RecomendationController.getById);
+router.put("/:id", authMiddleware, RecomendationController.update);
+router.delete("/:id", authMiddleware, RecomendationController.delete);
 
 export default router;
